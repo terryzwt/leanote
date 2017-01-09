@@ -1,0 +1,16 @@
+leanote-db:
+  restart: always
+  image: mongo:3.2.3
+  volumes:
+    - ./mongo-data:/data/db
+    - ./init-data:/tmp/init-data
+leanote-server:
+  restart: always
+  build: .
+  dockerfile: server/Dockerfile
+  ports:
+    - 9000:9000
+  volumes:
+    - ./leanote-conf/app.conf:/usr/local/leanote/conf/app.conf
+  links:
+    - leanote-db:mongodb
