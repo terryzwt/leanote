@@ -8,7 +8,7 @@ leanote-server:
   image: zterry95/leanote-server:2.4
   ports:
     - 9090:9000
-  #volumes:
-    #- ./leanote-conf/app.conf:/usr/local/leanote/conf/app.conf
+  volumes:
+    - ./leanote-conf/app.conf:/usr/local/leanote/conf/app.conf
   links:
     - leanote-db:mongodb
